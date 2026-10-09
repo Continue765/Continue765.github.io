@@ -6,6 +6,7 @@ image: cover.png
 categories:
   - 算法竞赛
 tags:
+  - QEDfalse
   - 区间DP
 math: true
 toc: true
