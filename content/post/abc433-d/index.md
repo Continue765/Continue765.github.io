@@ -2,8 +2,12 @@
 title: "ABC433 D：183183"
 slug: "abc433-d"
 date: 2025-11-23
+image: cover.jpg
 categories:
     - 算法竞赛
+tags:
+    - AtCoder
+    - 数论
 draft: false
 math: true
 toc: false
