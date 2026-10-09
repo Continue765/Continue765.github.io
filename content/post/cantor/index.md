@@ -2,6 +2,7 @@
 title: "浅谈康托展开"
 slug: "cantor"
 date: 2026-09-20
+image: "cover.png"
 categories:
   - 算法竞赛
 tags:
