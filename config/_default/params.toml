@@ -19,8 +19,8 @@ SortBy              = "default"
 
 [sidebar]
     emoji    = "📚"
-    subtitle = "And one day, I am gonna grow wings, a chemical reaction, hysterical and useless."
-    avatar   = "img/a.jpg"
+    subtitle = "I am gonna grow wings, a chemical reaction, hysterical and useless."
+    avatar   = "img/avatar.jpg"
 
 [article]
     headingAnchor = false
