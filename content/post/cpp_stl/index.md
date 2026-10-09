@@ -1,5 +1,11 @@
 ---
-
+title: "C++ STL 常见容器查找、删除和增添的时间复杂度"
+slug: "cpp_stl"
+date: 2025-09-29
+categories:
+  - 算法竞赛
+math: true
+toc: true
 ---
 
 ## 一. Vector
