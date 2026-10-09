@@ -14,18 +14,18 @@ comments: false
 
 ## Problem Statement
 
-For positive integers \(x,y\), define \(f(x,y)\) as follows:
+For positive integers $x,y$, define $f(x,y)$ as follows:
 
-- The value obtained by interpreting \(x,y\) in decimal notation without leading zeros as strings, concatenating them in this order to obtain a string \(S\), and then interpreting \(S\) as an integer in decimal notation.
+- The value obtained by interpreting $x,y$ in decimal notation without leading zeros as strings, concatenating them in this order to obtain a string $S$, and then interpreting $S$ as an integer in decimal notation.
 
-For example, \(f(12,3)=123\) and \(f(100,40)=10040\).
+For example, $f(12,3)=123$ and $f(100,40)=10040$.
 
-You are given positive integers \(N,M\) and a sequence of \(N\) positive integers \(A=(A_1,A_2,\ldots,A_N)\).
+You are given positive integers $N,M$ and a sequence of $N$ positive integers $A=(A_1,A_2,\ldots,A_N)$.
 
-Find the number of pairs of integers \((i,j)\) that satisfy all of the following conditions.
+Find the number of pairs of integers $(i,j)$ that satisfy all of the following conditions.
 
-- \(1\le i,j\le N\)
-- \(f(A_i,A_j)\) is a multiple of \(M\).
+- $1\le i,j\le N$
+- $f(A_i,A_j)$ is a multiple of $M$.
 
 ## Constraints
 
@@ -45,7 +45,7 @@ A_1 A_2 \ldots A_N
 
 ## Output
 
-Output the number of pairs of integers \((i,j)\) that satisfy all the conditions.
+Output the number of pairs of integers $(i,j)$ that satisfy all the conditions.
 
 ## Sample Input 1
 
@@ -60,38 +60,38 @@ Output the number of pairs of integers \((i,j)\) that satisfy all the conditions
 2
 ```
 
-- When \((i,j)=(1,1)\): \(f(A_1,A_1)=22\) is a multiple of \(11\).
-- When \((i,j)=(1,2)\): \(f(A_1,A_2)=242\) is a multiple of \(11\).
-- When \((i,j)=(2,1)\): \(f(A_2,A_1)=422\) is not a multiple of \(11\).
-- When \((i,j)=(2,2)\): \(f(A_2,A_2)=4242\) is not a multiple of \(11\).
+- When $(i,j)=(1,1)$: $f(A_1,A_1)=22$ is a multiple of $11$.
+- When $(i,j)=(1,2)$: $f(A_1,A_2)=242$ is a multiple of $11$.
+- When $(i,j)=(2,1)$: $f(A_2,A_1)=422$ is not a multiple of $11$.
+- When $(i,j)=(2,2)$: $f(A_2,A_2)=4242$ is not a multiple of $11$.
 
-Therefore, the valid pairs are \((i,j)=(1,1)\) and \((i,j)=(1,2)\), so the answer is \(2\).
+Therefore, the valid pairs are $(i,j)=(1,1)$ and $(i,j)=(1,2)$, so the answer is $2$.
 
 ## 分析
 
-我们需要在数列 \(A\) 中统计满足条件的有序数对 \((i,j)\)：将 \(A_i\) 和 \(A_j\) 拼接后，所得的数是 \(M\) 的倍数。
+我们需要在数列 $A$ 中统计满足条件的有序数对 $(i,j)$：将 $A_i$ 和 $A_j$ 拼接后，所得的数是 $M$ 的倍数。
 
-设 \(A_j\) 有 \(k\) 位，则拼接后的结果可以表示为
+设 $A_j$ 有 $k$ 位，则拼接后的结果可以表示为
 
-\[
+$$
 f(A_i,A_j)=10^kA_i+A_j
-\]
+$$
 
-因此，\(f(A_i,A_j)\) 能被 \(M\) 整除，当且仅当
+因此，$f(A_i,A_j)$ 能被 $M$ 整除，当且仅当
 
-\[
+$$
 A_j\equiv -10^kA_i\pmod M
-\]
+$$
 
-我们按照数字的位数维护数组 \(g\)。其中，\(g[k]\) 保存所有位数为 \(k\) 的数对 \(M\) 取模后的结果，并将每个数组排序。
+我们按照数字的位数维护数组 $g$。其中，$g[k]$ 保存所有位数为 $k$ 的数对 $M$ 取模后的结果，并将每个数组排序。
 
-接着枚举每个 \(A_i\)。对于每一种可能的位数 \(k\)，计算目标余数
+接着枚举每个 $A_i$。对于每一种可能的位数 $k$，计算目标余数
 
-\[
+$$
 (M-10^kA_i\bmod M)\bmod M
-\]
+$$
 
-然后在 \(g[k]\) 中用二分查找统计等于该余数的元素个数，并累加到答案中。
+然后在 $g[k]$ 中用二分查找统计等于该余数的元素个数，并累加到答案中。
 
 ## 代码
 
