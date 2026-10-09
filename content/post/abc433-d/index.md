@@ -10,7 +10,7 @@ tags:
     - 数论
 draft: false
 math: true
-toc: true
+toc: false
 comments: false
 ---
 
