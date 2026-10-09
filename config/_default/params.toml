@@ -11,7 +11,7 @@ SortBy              = "default"
 
 [footer]
     since      = 2025
-    customText = "TEST"
+    customText = ""
 
 [dateFormat]
     published   = ":date_full"
@@ -19,7 +19,7 @@ SortBy              = "default"
 
 [sidebar]
     emoji    = ""
-    subtitle = "One day, I am gonna grow wings, a chemical reaction, hysterical and useless."
+    subtitle = "I am gonna grow wings, a chemical reaction, hysterical and useless."
     avatar   = "img/avatar.jpg"
 
 [article]
