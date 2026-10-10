@@ -5,7 +5,7 @@ links:
     website: https://github.com
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   - title: ContinueLib
-    website: https://continue765.github.io/ContinueLib/
+    website: https://continue906.com/ContinueLib/
 menu:
     main:
         weight: 4
