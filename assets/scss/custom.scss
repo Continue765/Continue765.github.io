@@ -12,3 +12,30 @@
 .sidebar .site-description {
     white-space: pre-line;
 }
+
+@media (min-width: 1024px) {
+    .main-container.extended .left-sidebar {
+        max-width: 10%;
+    }
+
+    .main-container.extended .right-sidebar {
+        max-width: 20%;
+    }
+}
+
+#dark-mode-toggle .icon-tabler-moon-stars {
+    display: none;
+}
+
+[data-scheme="dark"] #dark-mode-toggle {
+    color: var(--accent-color);
+    font-weight: 700;
+
+    .icon-tabler-sun-high {
+        display: none;
+    }
+
+    .icon-tabler-moon-stars {
+        display: unset;
+    }
+}
