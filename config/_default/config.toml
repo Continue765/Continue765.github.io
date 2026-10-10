@@ -1,7 +1,7 @@
 # Change baseurl before deploy
 baseurl = "https://continue765.github.io/"
 locale  = "zh"
-title   = "Continue's Blog"
+title   = "Continue"
 
 # Theme i18n support
 # See all available values at https://github.com/CaiJimmy/hugo-theme-stack/tree/master/i18n
