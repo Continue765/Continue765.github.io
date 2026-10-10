@@ -33,3 +33,12 @@
 
     [social.params]
         icon = "brand-atcoder"
+
+[[social]]
+    identifier = "rss"
+    name       = "RSS"
+    weight     = 4
+    url        = "/index.xml"
+
+    [social.params]
+        icon = "rss"
