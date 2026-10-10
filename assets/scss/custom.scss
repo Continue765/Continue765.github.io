@@ -39,3 +39,27 @@
         display: unset;
     }
 }
+
+@media (min-width: 1024px) {
+    .template-archives .article-list--compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: none;
+        box-shadow: none;
+        gap: 1rem;
+
+        article {
+            background: var(--card-background);
+            border: none;
+            box-shadow: var(--shadow-l2);
+            margin-bottom: 8px;
+            border-radius: 16px;
+
+            transition: 0.6s ease;
+
+            &:hover {
+                transform: scale(1.03);
+            }
+        }
+    }
+}
