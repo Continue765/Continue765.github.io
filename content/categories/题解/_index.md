@@ -1,6 +1,6 @@
 ---
 title: 题解
 style:
-    background: "#2a9d8f"
+    background: "#14f029"
     color: "#ffffff"
 ---
