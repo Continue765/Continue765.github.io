@@ -1,6 +1,5 @@
 ---
 title: "关于"
-description: "关于 Continue 和这个博客"
 slug: "about"
 menu:
     main:
@@ -11,15 +10,12 @@ menu:
 comments: false
 ---
 
-## About Me
+## 关于本人
 
-你好，我是 Continue，欢迎来到我的博客。
 
-## About Blog
+## 关于博客
 
-这里用于记录学习笔记、算法竞赛题解和其他值得分享的内容。
 
-博客使用 [Hugo](https://gohugo.io/) 构建，采用 [Stack](https://stack.jimmycai.com/) 主题。
 
 ## 找到我
 
