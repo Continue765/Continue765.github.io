@@ -1,6 +1,6 @@
 ---
 title: 算法竞赛
 style:
-    background: "#2a9d8f"
+    background: "#6108f1"
     color: "#ffffff"
 ---
