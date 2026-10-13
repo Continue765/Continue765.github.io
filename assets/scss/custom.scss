@@ -18,6 +18,10 @@
     white-space: pre-line;
 }
 
+.left-sidebar {
+    --sidebar-avatar-size: 120px;
+}
+
 // Sidebar widgets: hover, press, and keyboard feedback.
 .right-sidebar {
     .search-form.widget,
