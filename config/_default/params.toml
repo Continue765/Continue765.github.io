@@ -11,14 +11,14 @@ SortBy              = "default"
 
 [footer]
     since      = 2025
-    customText = "🔍"
+    customText = ""
 
 [dateFormat]
     published   = ":date_full"
     lastUpdated = ":date_full"
 
 [sidebar]
-    emoji    = ""
+    emoji    = "🔍"
     subtitle = "All I understand is that I don't understand"
     avatar   = "img/avatar.jpg"
 

@@ -19,13 +19,21 @@
 }
 
 .left-sidebar {
-    --sidebar-avatar-size: 120px;
+    --sidebar-avatar-size: 140px;
+
+    .site-avatar {
+        width: 140px;
+        height: 140px;
+    }
 }
 
 // Rounded frame for Markdown fenced code blocks.
 .article-content {
     .highlight,
     & > pre {
+        width: auto;
+        margin-left: 16px;
+        margin-right: 16px;
         border-radius: var(--card-border-radius);
         box-shadow: var(--shadow-l1);
         overflow: hidden;
