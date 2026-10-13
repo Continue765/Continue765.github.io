@@ -152,3 +152,276 @@
         }
     }
 }
+
+// Keep the mobile menu visually consistent with the rounded cards.
+#main-menu {
+    border-radius: 10px;
+
+    @include respond(md) {
+        border-radius: 0;
+    }
+}
+
+// Hide the menu scrollbar and give the page scrollbar a softer appearance.
+#main-menu {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #d6dee1 transparent;
+
+    &::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #d6dee1;
+        border: 6px solid transparent;
+        border-radius: 20px;
+        background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #a8bbbf;
+    }
+}
+
+// Small content refinements from the Stack renovation.
+a,
+code {
+    word-break: break-word;
+}
+
+.article-page .main-article .article-content {
+    img {
+        max-width: 96%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    blockquote {
+        border-inline-start: 6px solid rgb(53 139 154 / 0.35);
+        background: rgb(58 151 67 / 0.12);
+    }
+}
+
+.article-content {
+    p > img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    a.link {
+        color: #4288b9;
+        font-weight: 600;
+    }
+}
+
+::selection {
+    color: #fff;
+    background: #34495e;
+}
+
+// Give list covers a predictable height at each responsive breakpoint.
+.article-list article .article-image img {
+    height: 150px;
+    object-fit: cover;
+
+    @include respond(md) {
+        height: 200px;
+    }
+
+    @include respond(xl) {
+        height: 305px;
+    }
+}
+
+.article-list--compact article .article-image img {
+    border-radius: 17%;
+}
+
+// Three columns for the links page on wide screens.
+@media (min-width: 1024px) {
+    .article-list--compact.links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        background: none;
+        box-shadow: none;
+
+        article {
+            margin-bottom: 8px;
+            border: none;
+            border-radius: var(--card-border-radius);
+            background: var(--card-background);
+            box-shadow: var(--shadow-l2);
+        }
+    }
+}
+
+// Home page spacing and the welcome card.
+.main-container {
+    gap: 50px;
+
+    @include respond(md) {
+        padding-right: 30px;
+        padding-left: 30px;
+        gap: 40px;
+    }
+}
+
+.welcome-banner {
+    display: block;
+    margin-bottom: var(--section-separation);
+    padding: 18px 24px;
+    color: var(--card-text-color-main);
+    background: var(--card-background);
+    border-radius: 30px;
+    box-shadow: var(--shadow-l2);
+    text-align: center;
+    overflow: hidden;
+
+    p {
+        margin: 0;
+        font-family: var(--article-font-family);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    .welcome-wave,
+    .welcome-word,
+    .welcome-site {
+        display: inline-block;
+    }
+
+    .welcome-wave {
+        animation: welcome-shake 1s ease 2s 1 both;
+    }
+
+    .welcome-word,
+    .welcome-site {
+        animation: welcome-jump 0.5s ease 1 both;
+    }
+
+    .welcome-word + .welcome-word {
+        animation-delay: 0.1s;
+    }
+
+    .welcome-site {
+        margin-left: 0.25em;
+        color: #e99312;
+        animation-delay: 0.2s;
+    }
+}
+
+@keyframes welcome-shake {
+    0%,
+    100% {
+        transform: rotate(0) scale(1);
+    }
+
+    25%,
+    75% {
+        transform: rotate(45deg) scale(1.2);
+    }
+
+    50% {
+        transform: rotate(0) scale(1.2);
+    }
+}
+
+@keyframes welcome-jump {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+// Add the macOS red/yellow/green header to fenced code blocks.
+.article-content .highlight {
+    &::before {
+        display: block;
+        width: 100%;
+        height: 32px;
+        margin-bottom: 5px;
+        background: url("/code-header.svg") left 2px / 57px auto no-repeat;
+        content: "";
+    }
+
+    pre {
+        max-height: 20em;
+        overflow-x: auto;
+        overflow-y: auto;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+.article-content .languageCodeButton {
+    position: absolute;
+    top: 9px;
+    right: 69px;
+    padding: 0 5px;
+    border: 0;
+    border-radius: 12px;
+    color: rgb(255 255 255 / 0.68);
+    background: transparent;
+    font-family: var(--base-font-family);
+    font-size: 1.3rem;
+}
+
+// Keyboard key styling for <kbd> in Markdown.
+kbd {
+    display: inline-block;
+    margin: 0 0.1em;
+    padding: 0.1em 0.6em;
+    border: 1px solid #adb3b9;
+    border-radius: 3px;
+    color: #242729;
+    background: #fff;
+    box-shadow: 0 1px 0 rgb(12 13 14 / 0.2), 0 0 0 2px #fff inset;
+    font-family: monospace;
+    font-size: 0.8em;
+    line-height: 1.4;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+// Rotate the avatar once when the pointer is placed over it.
+.sidebar header .site-avatar .site-logo {
+    transition: transform 1.65s ease-in-out;
+
+    &:hover {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .welcome-banner .welcome-wave,
+    .welcome-banner .welcome-word,
+    .welcome-banner .welcome-site,
+    .sidebar header .site-avatar .site-logo {
+        animation: none;
+        transition: none;
+        transform: none;
+    }
+}

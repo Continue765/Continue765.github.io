@@ -1,6 +1,7 @@
 ---
 title: "About"
 slug: "about"
+date: 2026-10-13
 menu:
     main:
         name: About
@@ -15,8 +16,6 @@ comments: false
 坐标广东, 人工智能专业，本科大二在读。
 
 ## 关于博客
-
-
 
 ## 找到我
 
