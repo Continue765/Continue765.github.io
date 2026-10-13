@@ -5,6 +5,7 @@ date: 2025-11-23
 image: cover.jpg
 categories:
     - 算法竞赛
+    - 题解
 tags:
     - AtCoder
     - 数论

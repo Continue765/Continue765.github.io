@@ -4,6 +4,7 @@ slug: "NC_summer_7_K"
 date: 2026-08-13
 categories:
   - 算法竞赛
+  - 题解
 tags:
   - 图论
   - 网络流

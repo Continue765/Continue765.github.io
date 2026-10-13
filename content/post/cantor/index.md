@@ -5,6 +5,7 @@ date: 2026-09-20
 image: "cover.png"
 categories:
   - 算法竞赛
+  - 数学
 tags:
   - 组合数学
 math: true

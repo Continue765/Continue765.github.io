@@ -5,6 +5,7 @@ image: "example2.jpg"
 date: 2025-12-07
 categories:
   - 算法竞赛
+  - 题解
 tags:
   - 凸包优化
 math: true

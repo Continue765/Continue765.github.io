@@ -5,6 +5,7 @@ date: 2026-02-26
 image: cover.png
 categories:
   - 算法竞赛
+  - 题解
 tags:
   - QEDfalse
   - 区间DP
