@@ -13,6 +13,64 @@
     white-space: pre-line;
 }
 
+// Sidebar widgets: hover, press, and keyboard feedback.
+.right-sidebar {
+    .search-form.widget,
+    .widget.archives .widget-archive--list a,
+    .tagCloud .tagCloud-tags a {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .search-form.widget:focus-within {
+        box-shadow: var(--shadow-l2), 0 0 0 2px var(--accent-color);
+    }
+
+    .widget.archives .widget-archive--list a,
+    .tagCloud .tagCloud-tags a {
+        &:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .right-sidebar {
+        .search-form.widget:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-l2);
+        }
+
+        .search-form.widget:focus-within {
+            box-shadow: var(--shadow-l2), 0 0 0 2px var(--accent-color);
+        }
+
+        .widget.archives .widget-archive--list a:hover,
+        .tagCloud .tagCloud-tags a:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-l2);
+        }
+
+        .widget.archives .widget-archive--list a:active,
+        .tagCloud .tagCloud-tags a:active {
+            transform: scale(0.98);
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .right-sidebar .search-form.widget,
+    .right-sidebar .widget.archives .widget-archive--list a,
+    .right-sidebar .tagCloud .tagCloud-tags a {
+        transition: none;
+        transform: none !important;
+    }
+}
+
 @media (min-width: 1024px) {
     .main-container .left-sidebar {
         max-width: 15%;
