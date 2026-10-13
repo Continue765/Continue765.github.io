@@ -19,7 +19,7 @@ SortBy              = "default"
 
 [sidebar]
     emoji    = "🔍"
-    subtitle = "All I understand is that I don't understand"
+    subtitle = "我与我周旋久"
     avatar   = "img/avatar.jpg"
 
 [article]
