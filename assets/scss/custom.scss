@@ -7,6 +7,11 @@
     --card-border-radius: 25px;
     --tag-border-radius: 8px;
     --article-font-size: 1.8rem;
+
+    // Match the reference site's typography while keeping local fallbacks.
+    --base-font-family: "Lato", var(--sys-font-family), sans-serif;
+    --article-font-family: "Noto Serif SC", var(--base-font-family);
+    --code-font-family: "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .sidebar .site-description {

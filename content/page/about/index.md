@@ -12,13 +12,10 @@ comments: false
 
 ## 关于本人
 
+坐标广东, 人工智能专业，本科大二在读。
 
 ## 关于博客
 
 
 
 ## 找到我
-
-- [GitHub](https://github.com/Continue765/)
-- [Codeforces](https://codeforces.com/profile/Continue90666)
-- [AtCoder](https://atcoder.jp/users/Continue906)
