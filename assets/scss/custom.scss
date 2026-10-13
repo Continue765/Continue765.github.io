@@ -22,6 +22,16 @@
     --sidebar-avatar-size: 120px;
 }
 
+// Rounded frame for Markdown fenced code blocks.
+.article-content {
+    .highlight,
+    & > pre {
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        overflow: hidden;
+    }
+}
+
 // Sidebar widgets: hover, press, and keyboard feedback.
 .right-sidebar {
     .search-form.widget,
