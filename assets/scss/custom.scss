@@ -15,7 +15,8 @@
     --article-font-size: 1.8rem;
 
     // Match the reference site's typography while keeping local fallbacks.
-    --base-font-family: "Lato", var(--sys-font-family), sans-serif;
+    // Use the same typeface for titles, metadata, tags, and sidebar UI.
+    --base-font-family: "Noto Serif SC", var(--sys-font-family), serif;
     --article-font-family: "Noto Serif SC", var(--base-font-family);
     --code-font-family: "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
 }
