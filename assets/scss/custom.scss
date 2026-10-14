@@ -169,6 +169,29 @@
     }
 }
 
+// Subtle hover feedback for navigation items other than the current page.
+.left-sidebar #main-menu > li:not(.current) > a {
+    border-radius: 8px;
+    transition: background-color 0.2s ease, filter 0.2s ease;
+
+    &:focus-visible {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .left-sidebar #main-menu > li:not(.current) > a:hover {
+        background-color: rgba(255, 255, 255, 0.08);
+        filter: brightness(1.15);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .left-sidebar #main-menu > li:not(.current) > a {
+        transition: none;
+    }
+}
+
 // Hide the menu scrollbar and give the page scrollbar a softer appearance.
 #main-menu {
     scrollbar-width: none;
