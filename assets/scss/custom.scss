@@ -2,6 +2,12 @@
     You can add your own custom styles here.
 */
 
+.site-footer .site-stats {
+    margin-bottom: var(--spacing-xs);
+    color: var(--body-text-color);
+    font-size: 1.2rem;
+}
+
 :root {
     --main-top-padding: 30px;
     --card-border-radius: 25px;
