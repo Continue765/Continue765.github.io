@@ -349,12 +349,12 @@ kbd {
     vertical-align: middle;
 }
 
-// Rotate the avatar once when the pointer is placed over it.
+// Gently enlarge the avatar on hover.
 .sidebar header .site-avatar .site-logo {
-    transition: transform 1.65s ease-in-out;
+    transition: transform 0.3s ease;
 
     &:hover {
-        transform: rotate(360deg);
+        transform: scale(1.08);
     }
 }
 
