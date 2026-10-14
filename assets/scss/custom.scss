@@ -270,7 +270,7 @@ code {
     }
 }
 
-// Home page spacing and the welcome card.
+// Home page spacing.
 .main-container {
     gap: 50px;
 
@@ -281,80 +281,10 @@ code {
     }
 }
 
-.welcome-banner {
-    display: block;
-    margin-bottom: var(--section-separation);
-    padding: 18px 24px;
-    color: var(--card-text-color-main);
-    background: var(--card-background);
-    border-radius: 30px;
-    box-shadow: var(--shadow-l2);
-    text-align: center;
-    overflow: hidden;
-
-    p {
-        margin: 0;
-        font-family: var(--article-font-family);
-        font-size: 2rem;
-        font-weight: 700;
-        line-height: 1.5;
-    }
-
-    .welcome-wave,
-    .welcome-word,
-    .welcome-site {
-        display: inline-block;
-    }
-
-    .welcome-wave {
-        animation: welcome-shake 1s ease 2s 1 both;
-    }
-
-    .welcome-word,
-    .welcome-site {
-        animation: welcome-jump 0.5s ease 1 both;
-    }
-
-    .welcome-word + .welcome-word {
-        animation-delay: 0.1s;
-    }
-
-    .welcome-site {
-        margin-left: 0.25em;
-        color: #e99312;
-        animation-delay: 0.2s;
-    }
-}
-
-@keyframes welcome-shake {
-    0%,
-    100% {
-        transform: rotate(0) scale(1);
-    }
-
-    25%,
-    75% {
-        transform: rotate(45deg) scale(1.2);
-    }
-
-    50% {
-        transform: rotate(0) scale(1.2);
-    }
-}
-
-@keyframes welcome-jump {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
 // Add the macOS red/yellow/green header to fenced code blocks.
 .article-content .highlight {
+    position: relative;
+
     &::before {
         display: block;
         width: 100%;
@@ -364,7 +294,8 @@ code {
         content: "";
     }
 
-    pre {
+    pre,
+    .chroma:has(> .lntable) {
         max-height: 20em;
         overflow-x: auto;
         overflow-y: auto;
@@ -373,6 +304,11 @@ code {
         &::-webkit-scrollbar {
             display: none;
         }
+    }
+
+    .lntable pre {
+        max-height: none;
+        overflow-y: visible;
     }
 }
 
@@ -383,7 +319,7 @@ code {
     padding: 0 5px;
     border: 0;
     border-radius: 12px;
-    color: rgb(255 255 255 / 0.68);
+    color: var(--pre-text-color);
     background: transparent;
     font-family: var(--base-font-family);
     font-size: 1.3rem;
@@ -416,9 +352,6 @@ kbd {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .welcome-banner .welcome-wave,
-    .welcome-banner .welcome-word,
-    .welcome-banner .welcome-site,
     .sidebar header .site-avatar .site-logo {
         animation: none;
         transition: none;
