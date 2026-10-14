@@ -1,5 +1,6 @@
 ---
-title: "关于我以及这个博客"
+title: "关于"
+description: "关于 Continue 以及这个博客"
 slug: "about"
 date: 2026-10-13
 image: "cover.png"
