@@ -30,7 +30,7 @@
 
     {{ $showReadingTime := $Page.Params.readingTime | default ($Page.Site.Params.article.readingTime) }}
     {{ $showDate := not $Page.Date.IsZero }}
-    {{ $showWordCount := in $Page.Site.Params.mainSections $Page.Section }}
+    {{ $showWordCount := true }}
     {{ $showTime := or $showDate $showReadingTime $showWordCount }}
     {{ $showTranslations := $Page.IsTranslated }}
     {{ $showTags := and $Page.Site.Params.Article.List.ShowTags ($Page.GetTerms "tags") $IsList }}

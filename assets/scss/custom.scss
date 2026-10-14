@@ -25,6 +25,14 @@
     white-space: pre-line;
 }
 
+.article-meta,
+.article-meta time,
+.article-meta span,
+.article-meta a,
+.site-footer .site-stats {
+    font-family: var(--base-font-family);
+}
+
 .sidebar {
     font-family: "Noto Serif SC", serif;
 }
