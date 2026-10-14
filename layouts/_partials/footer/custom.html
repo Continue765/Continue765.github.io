@@ -9,3 +9,14 @@
         });
     }
 </script>
+
+{{- $pageview := .Site.Params.pageview -}}
+{{- if and $pageview.enabled $pageview.serverURL -}}
+<script type="module">
+    import { pageviewCount } from "https://unpkg.com/@waline/client@v3/dist/pageview.js";
+
+    pageviewCount({
+        serverURL: {{ $pageview.serverURL | jsonify | safeJS }}
+    });
+</script>
+{{- end -}}

@@ -326,6 +326,17 @@ code {
     }
 }
 
+.site-footer .site-stats {
+    margin-bottom: var(--spacing-xs);
+    color: var(--body-text-color);
+    font-size: 1.2rem;
+}
+
+.site-footer .waline-pageview-count {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
 @keyframes welcome-shake {
     0%,
     100% {

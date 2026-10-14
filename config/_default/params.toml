@@ -13,6 +13,11 @@ SortBy              = "default"
     since      = 2025
     customText = ""
 
+[pageview]
+    # Waline pageview counting is enabled after you provide your own server URL.
+    enabled   = false
+    serverURL = ""
+
 [dateFormat]
     published   = ":date_full"
     lastUpdated = ":date_full"
