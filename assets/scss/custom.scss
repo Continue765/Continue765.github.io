@@ -170,24 +170,22 @@
 }
 
 // Subtle hover feedback for navigation items other than the current page.
-.left-sidebar #main-menu > li:not(.current) > a {
-    border-radius: 8px;
-    transition: background-color 0.2s ease, filter 0.2s ease;
+.left-sidebar #main-menu > li:not(.current) > a > span {
+    transition: filter 0.2s ease;
+}
 
-    &:focus-visible {
-        background-color: rgba(255, 255, 255, 0.08);
-    }
+.left-sidebar #main-menu > li:not(.current) > a:focus-visible > span {
+    filter: brightness(1.15);
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .left-sidebar #main-menu > li:not(.current) > a:hover {
-        background-color: rgba(255, 255, 255, 0.08);
+    .left-sidebar #main-menu > li:not(.current) > a:hover > span {
         filter: brightness(1.15);
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .left-sidebar #main-menu > li:not(.current) > a {
+    .left-sidebar #main-menu > li:not(.current) > a > span {
         transition: none;
     }
 }
