@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "关于我以及这个博客"
 slug: "about"
 date: 2026-10-13
 image: "cover.png"
