@@ -215,8 +215,8 @@ code {
     }
 
     blockquote {
-        border-inline-start: 6px solid rgb(53 139 154 / 0.35);
-        background: rgb(58 151 67 / 0.12);
+        border-inline-start: 6px solid rgba(53, 139, 154, 0.35);
+        background: rgba(58, 151, 67, 0.12);
     }
 }
 
@@ -340,7 +340,7 @@ kbd {
     border-radius: 3px;
     color: #242729;
     background: #fff;
-    box-shadow: 0 1px 0 rgb(12 13 14 / 0.2), 0 0 0 2px #fff inset;
+    box-shadow: 0 1px 0 rgba(12, 13, 14, 0.2), 0 0 0 2px #fff inset;
     font-family: monospace;
     font-size: 0.8em;
     line-height: 1.4;
