@@ -2,6 +2,7 @@
 title: "About"
 slug: "about"
 date: 2026-10-13
+image: "image.png"
 menu:
     main:
         name: About
