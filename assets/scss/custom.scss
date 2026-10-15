@@ -177,7 +177,7 @@
     }
 }
 
-// Subtle hover feedback for navigation items other than the current page.
+// Keep navigation links free of hover backgrounds.
 .left-sidebar #main-menu > li > a {
     background: transparent;
     border-radius: 0;
@@ -188,26 +188,6 @@
     &:active {
         background: transparent;
         box-shadow: none;
-    }
-}
-
-.left-sidebar #main-menu > li:not(.current) > a > span {
-    transition: filter 0.2s ease;
-}
-
-.left-sidebar #main-menu > li:not(.current) > a:focus-visible > span {
-    filter: brightness(1.15);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .left-sidebar #main-menu > li:not(.current) > a:hover > span {
-        filter: brightness(1.15);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .left-sidebar #main-menu > li:not(.current) > a > span {
-        transition: none;
     }
 }
 
@@ -327,37 +307,6 @@ code {
         padding-right: 30px;
         padding-left: 30px;
         gap: 40px;
-    }
-}
-
-// Add the macOS red/yellow/green header to fenced code blocks.
-.article-content .highlight {
-    position: relative;
-
-    &::before {
-        display: block;
-        width: 100%;
-        height: 32px;
-        margin-bottom: 5px;
-        background: url("/code-header.svg") left 2px / 57px auto no-repeat;
-        content: "";
-    }
-
-    pre,
-    .chroma:has(> .lntable) {
-        max-height: 20em;
-        overflow-x: auto;
-        overflow-y: auto;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
-
-    .lntable pre {
-        max-height: none;
-        overflow-y: visible;
     }
 }
 
