@@ -1,18 +1,15 @@
 ---
-
 title: "点分治"
 slug: "centroid_decomposition"
 image: "cover.png"
 date: 2026-10-16
 categories:
-
-- 算法竞赛
-  tags:
-- 图论
-- 树上问题
-  math: true
-  toc: true
-
+  - 算法竞赛
+tags:
+  - 图论
+  - 树上问题
+math: true
+toc: true
 ---
 
 ## 什么是点分治
