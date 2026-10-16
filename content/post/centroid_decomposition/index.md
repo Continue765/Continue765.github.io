@@ -1,6 +1,7 @@
 ---
 title: "点分治"
 slug: "centroid_decomposition"
+image: "cover.png"
 date: 2026-10-16
 categories:
   - 算法竞赛
