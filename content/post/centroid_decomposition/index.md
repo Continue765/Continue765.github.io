@@ -49,7 +49,6 @@ $$
 
 <details>
 <summary>我的点分治模板</summary>
-
 借鉴了 $maspy$ 的回调函数的封装方法。该模板接受一颗树和一个回调函数```f(fa, vt, pos)```，局部编号 0 为重心，各分支占连续区间。
 
 ```fa[i]```: 局部编号```i```的父节点的局部编号
@@ -114,7 +113,6 @@ void centroidDecompsition(const Tree<T>& tree, F&& f) {
     divide(divide, tree.root);
 }
 ```
-
 </details>
 
 ## 为什么要用点分治
@@ -159,7 +157,7 @@ $$
 
 我们该如何统计这种点对呢？这里提供一种基于容斥原理的方法：
 
-首先我们先统计连通块内的***所有***满足 $d_i + d_j$, $i < j$ 的点对，此时会多统计了同一分支内的满足要求的点对。就如上题所说，这种点对是不合法的。他们的实际路径并不经过分治中心。
+首先我们先统计连通块内的***所有***满足 $d_i + d_j$, $i < j$ 的点对，此时会多统计了同一分支内的满足要求的点对。就如上题所说，这种点对是不合法的。他们的实际路径并不经过重心。
 
 于是我们再去遍历每一个 $c$ 的分支，统计在当前分支连通块内满足要求的点对数，接着把 ***总点对数*** - ***分支点对数*** ，就能得到最终答案了。
 
@@ -235,7 +233,6 @@ int main() {
     return 0;
 }
 ```
-
 </details>
 
 ## 洛谷 P2664 树上游戏
@@ -252,9 +249,158 @@ $$sum_i=\sum_{j=1}^n s(i, j)$$
 
 ### 思路
 
+我们还是来考虑如何统计所有经过当前重心的路径信息。
 
+所以问题就转化为了：对于每个起点，统计连通块内所有点对之间经过重心的路径的颜色数量。
 
+这个该如何统计呢？先说明几个变量和数组的意义：
 
+$c$ ：重心
+
+$col_i$: $i$ 点的颜色
+
+$M$ ：当前连通块
+
+$val_i$ ：$\sum_{v \in M}s(u,v)$
+
+$s$ ：连通块的大小
+
+$ans_i$：$i$ 点的答案
+
+$siz_i$ ：以 $c$ 为根时，$i$ 的子树大小
+
+$cnt_i$：从 $c$ 出发的，经过颜色 $i$ 的路径的数量
+
+我们从最简单的情况出发：
+
+#### 1. 以当前的重心为起点时
+
+以当前的重心为起点，在最开始答案就已经有 $s$ 个了，因为以 $c$ 为起点的路径本来就有 $s$ 条（终点可以包括 $c$ 自己），所以 $c$ 自己的颜色就已经可以为 $val_c$ 贡献 $s$ 了。然后我们接着往下走。假如我们走到了一个 $u$ 点，而 $u$ 的颜色是第一次出现的话，那它对 $val_c$ 的贡献就是 $siz_u$，因为从这个点开始往后可以到达的所有结点（也就是 $u$ 的整颗子树），都能因为 $u$ 的颜色给 $val_c$ 贡献 $1$ 。
+
+通过这种方法，我们可以统计出当前分治中心的答案。
+
+#### 2. 以其他结点为起点时
+
+记 $P(u)$ 为 $c$ 到 $u$ 的路径上的颜色集合，那么：
+
+$$
+s(u,v)=|P(u)\cup P(v)|.$$
+
+从 $c$ 到 $u$ 的路径上的信息还是比较好维护的，但是如何合并两条路径呢？
+
+我们从重心开始往下推：每往下走一个点，这个点就得继承它父节点的 $val$（因为我们找的是经过重心的路径，所以往下走到新结点的时候，我们需要统计的它的路径也是继承自它的父节点的，因此可以直接继承父节点的 $val$ ），走到点 $u$ 时，若 $u$ 的颜色是第一次出现，则 $val_u$ 得到的贡献是 $s-cnt_{col_u}$ ，因为如果我们固定 $u$ 到 $c$ 这一段路，然后去找能给 $val_u$ 增加贡献的终点 $v$ ，发现只有不含 $col_u$ 的路径才能贡献 $1$ ，否则贡献 $0$ 。
+
+这样推下去我们就把以其他结点为起点的情况也解决了
+
+### 容斥
+
+因为和之前的题一样，我们可能会多统计那些根本没有经过重心的路径，所以我们现在通过容斥原理来得到最终的答案。
+
+首先我们先统计整个连通块，就按照上面的方法就行了。
+
+然后遍历分支的连通块，再统计一遍，只不过我们是拿整个连通块的结果减去这次统计的结果。
+
+这样就可以得到这个连通块最终的 $val$ 了，然后把 $val$ 给累加到对应点的 $ans$ 上。
+
+<details>
+<summary>Code(部分)</summary>
+
+```cpp
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+
+    vector<int> c(n);
+    for (int i = 0; i < n; i++) {
+        cin >> c[i];
+    }
+
+    Graph<int, false> g(n);
+    for (int i = 0; i < n - 1; i++) {
+        int u, v;
+        cin >> u >> v;
+        u--, v--;
+        g.add(u, v);
+    }
+
+    Tree tree(g);
+    vector<int> cnt(*max_element(c.begin(), c.end()) + 1);
+    vector<int> seen(cnt.size());
+    vector<i64> ans(n);
+
+    centroidDecompsition(tree, [&](vector<int>& fa, vector<int>& vt, vector<int>& pos) {
+        int m = vt.size();
+        vector<int> siz(m, 1), first(m);
+        vector<vector<int>> adj(m);
+        vector<i64> val(m);
+        for (int i = 1; i < m; i++) {
+            adj[fa[i]].push_back(i);
+        }
+        for (int i = m - 1; i > 0; i--) {
+            siz[fa[i]] += siz[i];
+        }
+
+        // first标记路径上是否有新增颜色。
+        auto dfs = [&](this auto&& self, int u) -> void {
+            int x = c[vt[u]];
+            first[u] = (u != 0 && seen[x] == 0);
+            seen[x]++;
+            for (int v : adj[u]) {
+                self(v);
+            }
+            seen[x]--;
+        };
+        dfs(0);
+
+        // 累加两条重心路径的颜色并集大小。
+        auto calc = [&](int l, int r, int sign) {
+            int s = r - l;
+            val[0] = s;
+
+            // 统计起点在重心时的信息
+            for (int i = l; i < r; i++) {
+                if (first[i]) {
+                    cnt[c[vt[i]]] += siz[i];
+                    val[0] += siz[i];
+                }
+            }
+
+            // 统计起点在其他点时的信息
+            for (int i = l; i < r; i++) {
+                if (i != 0) {
+                    val[i] = val[fa[i]];
+                    if (first[i]) {
+                        val[i] += s - cnt[c[vt[i]]];
+                    }
+                }
+                ans[vt[i]] += sign * val[i];
+            }
+
+            for (int i = l; i < r; i++) {
+                cnt[c[vt[i]]] = 0;
+            }
+        };
+
+        calc(0, m, 1);
+        for (int b = 1; b < int(pos.size()) - 1; b++) {
+            calc(pos[b], pos[b + 1], -1);
+        }
+    });
+
+    for (auto& x : ans) {
+        cout << x << "\n";
+    }
+
+    return 0;
+}
+```
+
+</details>
+
+---
 
 ## 参考资料
 
