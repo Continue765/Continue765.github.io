@@ -49,13 +49,14 @@ $$
 
 <details>
 <summary>我的点分治模板</summary>
-借鉴了 $maspy$ 的回调函数的封装方法。该模板接受一颗树和一个回调函数```f(fa, vt, pos)```，局部编号 0 为重心，各分支占连续区间。
 
-```fa[i]```: 局部编号```i```的父节点的局部编号
+借鉴了 $maspy$ 的回调函数的封装方法。该模板接受一颗树和一个回调函数 `f(fa, vt, pos)`，局部编号 0 为重心，各分支占连续区间。
 
-```vt[i]```: 局部编号```i```对应的原始编号
+`fa[i]`: 局部编号 `i` 的父节点的局部编号
 
-```pos[i]```: 局部编号```i```的子树的所有点在```vt```所占据的连续下标区间的左端点
+`vt[i]`: 局部编号 `i` 对应的原始编号
+
+`pos[i]`: 局部编号 `i` 的子树的所有点在 `vt` 所占据的连续下标区间的左端点
 
 ```cpp
 template <typename T, typename F>
@@ -113,6 +114,7 @@ void centroidDecompsition(const Tree<T>& tree, F&& f) {
     divide(divide, tree.root);
 }
 ```
+
 </details>
 
 ## 为什么要用点分治
