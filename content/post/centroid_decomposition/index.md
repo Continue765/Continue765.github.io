@@ -150,24 +150,7 @@ void centroidDecompsition(const Tree<T>& tree, F&& f) {
 
 于是我们再去遍历每一个 $c$ 的分支，统计在当前分支连通块内满足要求的点对数，接着把 ***总点对数*** - ***分支点对数*** ，就能得到最终答案了。
 
-而给定一个连通块，我们要如何统计连通块中满足要求的点对数量呢？双指针就行了：
-
-```cpp
-auto calc = [&](vector<int> dist) -> i64 {
-    sort(dist.begin(), dist.end());
-    int l = 0, r = int(dist.size()) - 1;
-    i64 res = 0;
-    while (l < r) {
-        if (dist[l] + dist[r] <= k) {
-            res += r - l;
-            l++;
-        } else {
-            r--;
-        }
-    }
-    return res;
-};
-```
+而给定一个连通块，我们要如何统计连通块中满足要求的点对数量呢？双指针就行了
 
 <details>
 <summary>Code(部分)</summary>
