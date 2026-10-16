@@ -44,6 +44,75 @@ $$
 
 如果每个重心都清空一个长度为全局 `n` 的数组，累计可能达到 $O(n^2)$。应当只清空实际访问的位置，或使用时间戳；局部离散化和容器大小也应与当前处理的信息量匹配。
 
+<details>
+<summary>我的点分治模板</summary>
+
+借鉴了 $maspy$ 的回调函数的封装方法。该模板接受一颗树和一个回调函数 ```f```
+
+```f(fa, vt, pos)```，局部编号 0 为重心，各分支占连续区间。
+```fa[i]```: 局部编号```i```的父节点的局部编号
+```vt[i]```: 局部编号```i```对应的原始编号
+```pos[i]```: 局部编号```i```的子树的所有点在```vt```所占据的连续下标区间的左端点
+
+```cpp
+template <typename T, typename F>
+void centroidDecompsition(const Tree<T>& tree, F&& f) {
+    const auto& g = tree.g;
+    vector<int> siz(tree.n), dead(tree.n), fa, vt, pos;
+    auto collect = [&](int u, int p) {
+        int l = vt.size();
+        vt.push_back(u);
+        fa.push_back(p);
+        for (int i = l; i < int(vt.size()); i++) {
+            int u = vt[i];
+            for (auto [v, id] : g.adj[u]) {
+                if (dead[v] || (fa[i] != -1 && v == vt[fa[i]])) {
+                    continue;
+                }
+                vt.push_back(v);
+                fa.push_back(i);
+            }
+        }
+    };
+    auto divide = [&](auto&& self, int u) -> void {
+        vt.clear();
+        fa.clear();
+        collect(u, -1);
+        int m = vt.size(), c = -1;
+        for (int v : vt) {
+            siz[v] = 1;
+        }
+        for (int i = m - 1; i >= 0; i--) {
+            int v = vt[i];
+            if (siz[v] >= (m + 1) / 2) {
+                c = v;
+                break;
+            }
+            siz[vt[fa[i]]] += siz[v];
+        }
+        dead[c] = true;
+        vt = {c};
+        fa = {-1};
+        pos = {0, 1};
+        for (auto [v, id] : g.adj[c]) {
+            if (!dead[v]) {
+                collect(v, 0);
+                pos.push_back(vt.size());
+            }
+        }
+        f(fa, vt, pos);
+        for (auto [v, id] : g.adj[c]) {
+            if (!dead[v]) {
+                self(self, v);
+            }
+        }
+    };
+    divide(divide, tree.root);
+}
+```
+
+</details>
+
 ## 为什么要用点分治
 
 我们先来看道例题：[洛谷 P3806](https://www.luogu.com.cn/problem/P3806)
