@@ -171,7 +171,8 @@ auto calc = [&](vector<int> dist) -> i64 {
 };
 ```
 
-### Code(部分)
+<details>
+<summary>Code(部分)</summary>
 
 ```cpp
 int main() {
@@ -235,3 +236,5 @@ int main() {
 }
 
 ```
+
+</details>
