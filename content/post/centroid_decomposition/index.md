@@ -228,3 +228,9 @@ int main() {
 ```
 
 </details>
+
+## 参考资料
+
+- [PinkRabbit：点分治](https://www.cnblogs.com/PinkRabbit/p/8593080.html)
+- [洛谷：【学习笔记】点分治](https://www.luogu.com.cn/article/gw1zwix8)
+- [OI Wiki：树分治](https://oi-wiki.org/graph/tree-divide/)
