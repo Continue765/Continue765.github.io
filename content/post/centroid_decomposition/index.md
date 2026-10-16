@@ -1,5 +1,5 @@
 ---
-title: "点分治 & 点分树 专题"
+title: "点分治专题"
 slug: "centroid_decomposition"
 image: "cover.png"
 date: 2026-10-16
