@@ -1,5 +1,5 @@
 ---
-title: "点分治"
+title: "点分治 & 点分树 专题"
 slug: "centroid_decomposition"
 image: "cover.png"
 date: 2026-10-16
@@ -8,6 +8,7 @@ categories:
 tags:
   - 图论
   - 树上问题
+  - 点分治
 math: true
 toc: true
 ---
@@ -231,6 +232,6 @@ int main() {
 
 ## 参考资料
 
-- [PinkRabbit：点分治](https://www.cnblogs.com/PinkRabbit/p/8593080.html)
 - [洛谷：【学习笔记】点分治](https://www.luogu.com.cn/article/gw1zwix8)
 - [OI Wiki：树分治](https://oi-wiki.org/graph/tree-divide/)
+- [PinkRabbit：点分治](https://www.cnblogs.com/PinkRabbit/p/8593080.html)
