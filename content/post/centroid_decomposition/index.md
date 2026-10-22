@@ -62,14 +62,14 @@ $$
 template <typename T, typename F>
 void centroidDecompsition(const Tree<T>& tree, F&& f) {
     const auto& g = tree.g;
-    vector<int> siz(tree.n), dead(tree.n), fa, vt, pos;
+    vector<int> dead(tree.n), siz, fa, vt, pos;
     auto collect = [&](int u, int p) {
         int l = vt.size();
         vt.push_back(u);
         fa.push_back(p);
         for (int i = l; i < int(vt.size()); i++) {
             int u = vt[i];
-            for (auto [v, id] : g.adj[u]) {
+            for (auto [v, id] : g[u]) {
                 if (dead[v] || (fa[i] != -1 && v == vt[fa[i]])) {
                     continue;
                 }
@@ -78,40 +78,33 @@ void centroidDecompsition(const Tree<T>& tree, F&& f) {
             }
         }
     };
-    auto divide = [&](auto&& self, int u) -> void {
+    vector<int> roots{tree.root};
+    for (int t = 0; t < int(roots.size()); t++) {
         vt.clear();
         fa.clear();
-        collect(u, -1);
+        collect(roots[t], -1);
         int m = vt.size(), c = -1;
-        for (int v : vt) {
-            siz[v] = 1;
-        }
+        siz.assign(m, 1);
         for (int i = m - 1; i >= 0; i--) {
-            int v = vt[i];
-            if (siz[v] >= (m + 1) / 2) {
-                c = v;
+            if (siz[i] >= (m + 1) / 2) {
+                c = vt[i];
                 break;
             }
-            siz[vt[fa[i]]] += siz[v];
+            siz[fa[i]] += siz[i];
         }
         dead[c] = true;
         vt = {c};
         fa = {-1};
         pos = {0, 1};
-        for (auto [v, id] : g.adj[c]) {
+        for (auto [v, id] : g[c]) {
             if (!dead[v]) {
+                roots.push_back(v);
                 collect(v, 0);
                 pos.push_back(vt.size());
             }
         }
         f(fa, vt, pos);
-        for (auto [v, id] : g.adj[c]) {
-            if (!dead[v]) {
-                self(self, v);
-            }
-        }
-    };
-    divide(divide, tree.root);
+    }
 }
 ```
 
@@ -235,6 +228,7 @@ int main() {
     return 0;
 }
 ```
+
 </details>
 
 ## 洛谷 P2664 树上游戏
@@ -401,6 +395,20 @@ int main() {
 ```
 
 </details>
+
+## 洛谷 U648884 MX-BJ 树上均衡路径
+
+### 题意
+
+如果树上一条简单路径满足：路径上点权最大值和最小值**都**在路径的端点上，并且**路径的两个端点不相同**；那么称之为完全非均衡路径。
+
+给定一棵树，点权就是点的编号（是 $1$ 到 $n$ 的排列）。
+
+求这颗树上的完全非均衡路径数量。
+
+### 思路
+
+
 
 ---
 
